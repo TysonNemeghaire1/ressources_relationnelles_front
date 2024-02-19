@@ -39,7 +39,7 @@ function Nav() {
             <span className="text-lg text-black">RESSOURCES</span>
           </li>
         </ul>
-        <div className="flex w-1/3 items-center gap-2">
+        <div className="flex w-1/3 items-center justify-end gap-2">
           <SearchBar
             onFocus={toggleLabel}
             showLabel={showLabel}

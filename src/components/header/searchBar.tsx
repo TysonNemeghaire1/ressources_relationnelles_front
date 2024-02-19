@@ -28,7 +28,7 @@ function SearchBar({
       </label>
       <button
         type="button"
-        className="rounded-full p-2 hover:bg-custom-blue-4 hover:bg-opacity-15 flex items-center"
+        className="flex items-center rounded-full p-2 hover:bg-custom-blue-4 hover:bg-opacity-15"
       >
         <FaMagnifyingGlass className="text-custom-blue-4 size-4" />
       </button>
