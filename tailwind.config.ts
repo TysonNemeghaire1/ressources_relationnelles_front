@@ -14,6 +14,8 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "header-gradient": "linear-gradient(90deg, #79DBF0, #4E67EC)",
         "footer-gradient": "linear-gradient(180deg, #4E67EC, #79DBF0)",
+        "trendy-ressource-gradient":
+          "linear-gradient(180deg, #6BB6EF, #E9F4FE)",
       },
       colors: {
         "custom-blue-0": "#E9F4FE",

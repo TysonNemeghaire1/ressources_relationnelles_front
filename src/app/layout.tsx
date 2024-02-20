@@ -20,7 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Header />
-        {children}
+        <div className="w-screen bg-white">
+          <div className="mx-auto lg:w-4/5 text-black">{children}</div>
+        </div>
         <Footer />
       </body>
     </html>
