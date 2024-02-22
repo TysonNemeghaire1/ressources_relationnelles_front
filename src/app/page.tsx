@@ -5,7 +5,7 @@ export default function Home() {
     <>
       <div className="flex justify-between gap-8 py-14">
         <TrendyRessources />
-        <aside className="w-1/4 bg-green-300">Aside</aside>
+        <aside className="hidden lg:block lg:w-1/4 bg-green-300">Aside</aside>
       </div>
     </>
   );
