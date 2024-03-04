@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from 'next/link';
 
 function Banner() {
   return (
@@ -32,9 +33,7 @@ function Banner() {
               <li className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white">
                 ACCUEIL
               </li>
-              <li className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white">
-                MON COMPTE
-              </li>
+              <Link href="/account" className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white">MON COMTE</Link>
               <li className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white">
                 DÉCONNEXION
               </li>
