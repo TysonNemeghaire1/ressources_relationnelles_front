@@ -35,3 +35,7 @@ body {
   white-space: nowrap;
   width: 1px;
 }
+
+.scroll-bar{
+  scrollbar-color: #003A91 #E9F4FE;
+}
