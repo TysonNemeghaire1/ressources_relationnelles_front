@@ -30,9 +30,11 @@ function Banner() {
         <div className="flex w-1/2 justify-end">
           <nav>
             <ul className="flex gap-3">
+              <Link href='/'>
               <li className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white">
                 ACCUEIL
               </li>
+              </Link>
               <Link href="/account" className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white">MON COMTE</Link>
               <li className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white">
                 DÉCONNEXION

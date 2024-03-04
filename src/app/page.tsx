@@ -1,14 +1,29 @@
+'use client'
+import ActionRessource from "@/components/actionRessource";
 import TrendyRessources from "@/components/trendyRessources";
 import Title from "@/components/texts/titlePage";
 import RessourceCard from "@/components/cards/ressourceCard";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const username = 'Jean-Marc'
+  const router = useRouter()
+
+  const handlePublish = () => {
+    router.push('/ressource/create')
+  }
+  
   return (
     <>
       <div className="flex justify-between gap-8 py-14">
         <TrendyRessources />
-        <aside className="hidden bg-green-300 lg:block lg:w-1/4">Aside</aside>
+        <aside className="hidden lg:block lg:w-1/4 bg-green-300">
+          <p>Bienvenue</p>
+          <p>{username}</p>
+          <ActionRessource action={"PUBLIER"} item={"UNE NOUVELLE RESSOURCE"} handleClick={handlePublish} />
+        </aside>
+
       </div>
       <section className="pb-14">
         <Title>LES DERNIÈRES RESSOURCES PUBLIÉES</Title>
