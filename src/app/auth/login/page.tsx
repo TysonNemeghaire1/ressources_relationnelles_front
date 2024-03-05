@@ -1,23 +1,51 @@
+'use client'
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from "next/image";
+import { useAuth } from '@/context/AuthContext';
+import { useRouter } from "next/navigation";
+import { login as apiLogin } from '@/api/auth';
 
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { login, currentUser, setCurrentUser } = useAuth()
+  const router = useRouter()
 
+  useEffect(()=>{
+    if(currentUser){
+      router.push('/')
+    }
+  },[])
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { token, user } = await apiLogin(email, password);
+
+      setCurrentUser(user)
+      login(token, user);
+      router.push('/');
+    } catch (error) {
+      console.error("Erreur lors de la connexion:", error);
+    }
+  };
+    
   return (
     <main>
       <h1 className="text-4xl text-gray-700 text-center font-light mb-4 align-top pt-[5vh]">CONNEXION</h1>
       <div className="flex flex-col items-center justify-center p-4 white">
-        <form className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex flex-col md:flex-row gap-2 auto-rows-auto">
             <div className='flex items-center justify-center h-[30vh]  md:h-[40vh] w-[40vh]'>
+
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">Adresse mail</label>
-                <input type="email" id="email" className="mt-1 p-2 w-full border-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-gray-700" placeholder="mail@exemple.com" required />
+                <input onChange={(e)=>setEmail(e.target.value)} type="email" id="email" className="mt-1 p-2 w-full border-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-gray-700" placeholder="mail@exemple.com" required />
                 <p className='h-[3vh]'>
                 </p>
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700">Mot de passe</label>
-                <input type="password" id="password" className="mt-1 p-2 w-full border-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-gray-700" required />
+                <input onChange={(e)=>setPassword(e.target.value)} type="password" id="password" className="mt-1 p-2 w-full border-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-gray-700" required />
                 <p className='h-[3vh]'>
                 </p>
                 <div className="grid grid-cols-2 gap-4 items-center justify-center">

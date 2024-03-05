@@ -5,9 +5,10 @@ import Title from "@/components/texts/titlePage";
 import RessourceCard from "@/components/cards/ressourceCard";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Home() {
-  const username = 'Jean-Marc'
+  const {currentUser} = useAuth()
   const router = useRouter()
 
   const handlePublish = () => {
@@ -20,7 +21,7 @@ export default function Home() {
         <TrendyRessources />
         <aside className="hidden lg:block lg:w-1/4 bg-green-300">
           <p>Bienvenue</p>
-          <p>{username}</p>
+          <p>{currentUser?.name}</p>
           <ActionRessource action={"PUBLIER"} item={"UNE NOUVELLE RESSOURCE"} handleClick={handlePublish} />
         </aside>
 
