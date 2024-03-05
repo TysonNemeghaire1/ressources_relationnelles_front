@@ -23,7 +23,7 @@ export default function Login() {
                 <div className="grid grid-cols-2 gap-4 items-center justify-center">
                   <button type="submit" className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700">Connexion</button>
                   <Link href={'/auth/register'}>
-                    <div className="text-sm text-indigo-600 hover:underline">Pas de compte ? S'inscrire</div>
+                    <div className="text-sm text-indigo-600 hover:underline">Pas de compte ? S&apos;inscrire</div>
                   </Link>
                 </div>
               </div>
@@ -43,7 +43,7 @@ export default function Login() {
                   src="/FranceConnect.png"
                   alt="France Connect"
                 />
-                <a href='https://franceconnect.gouv.fr/'>Qu'est-ce que FranceConnect ?</a>
+                <a href='https://franceconnect.gouv.fr/'>Qu&apos;est-ce que FranceConnect ?</a>
               </div>
             </div>
           </div>
