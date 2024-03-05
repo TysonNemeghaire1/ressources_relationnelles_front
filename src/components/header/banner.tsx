@@ -35,7 +35,7 @@ function Banner() {
                 ACCUEIL
               </li>
               </Link>
-              <Link href="/account" className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white">MON COMTE</Link>
+              <Link href="/account" className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white">MON COMPTE</Link>
               <li className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white">
                 DÉCONNEXION
               </li>
