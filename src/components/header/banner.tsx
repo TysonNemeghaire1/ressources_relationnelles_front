@@ -19,7 +19,6 @@ function Banner() {
               height={34}
               src="/logo.png"
               alt="Logo du ministère"
-              className="size-fit"
             />
             <p className="max-w-lg">
               <span className="font-bold">
