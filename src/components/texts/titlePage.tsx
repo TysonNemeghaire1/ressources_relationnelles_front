@@ -6,7 +6,7 @@ interface Title{
 
 const Title: React.FC<Title> = ({ children }) => {
     return (
-        <h1 className="font-julius text-2xl sm:text-2xl md:text-3xl lg:text-4xl">
+        <h1 className="font-julius uppercase text-1xl sm:text-2xl md:text-3xl lg:text-4xl">
             {children}
         </h1>
     );
