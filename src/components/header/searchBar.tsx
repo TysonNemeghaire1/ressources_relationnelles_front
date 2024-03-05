@@ -5,34 +5,44 @@ function SearchBar({
   onChange,
   onFocus,
   showLabel,
+  dark = true,
 }: {
   onFocus: () => void;
   showLabel: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  dark?: boolean;
 }) {
   return (
-    <>
-      <label className="relative text-lg" onFocus={onFocus} onBlur={onFocus}>
+    <div className="flex">
+      <label
+        className={`relative text-lg ${dark ? "" : "text-custom-blue-0"}`}
+        onFocus={onFocus}
+        onBlur={onFocus}
+      >
         <span
-          className={`absolute right-1 text-custom-blue-3 ${
-            showLabel ? "" : "visually-hidden"
-          }`}
+          className={`absolute right-1 
+          ${showLabel ? "" : "visually-hidden"}
+          ${dark ? "text-custom-blue-3" : "text-custom-blue-0"}`}
         >
           Ma recherche...
         </span>
         <input
           onChange={onChange}
           type="text"
-          className="rounded bg-transparent text-right text-lg text-custom-blue-3 focus:outline-none"
+          className={`rounded bg-transparent text-right text-lg focus:outline-none ${dark ? "text-custom-blue-3" : "text-custom-blue-0"}`}
         />
       </label>
       <button
         type="button"
-        className="flex items-center rounded-full p-2 hover:bg-custom-blue-4 hover:bg-opacity-15"
+        className={
+          "flex items-center rounded-full p-2 hover:bg-custom-blue-4 hover:bg-opacity-15"
+        }
       >
-        <FaMagnifyingGlass className="text-custom-blue-4 size-4" />
+        <FaMagnifyingGlass
+          className={`size-4 ${dark ? "text-custom-blue-4" : "text-custom-blue-0"}`}
+        />
       </button>
-    </>
+    </div>
   );
 }
 export default SearchBar;

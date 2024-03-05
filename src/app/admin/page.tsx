@@ -143,12 +143,8 @@ const sharedResources = [
 export default function Page() {
     return (
         <main className="py-10">
-            <Title>Panneau d'administration</Title>
+            <Title>Panneau d&apos;administration</Title>
             <AdminPanel />
-
-            
-
-
         </main>
     );
 }

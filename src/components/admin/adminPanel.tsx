@@ -40,7 +40,8 @@ export default function AdminPanel(){
     );
 };
 
-const ReportedComment = ({data}) => {
+// @ts-ignore
+const ReportedComment = ({data}) => {
 
     const handleDelete = () => {
         console.log('Delete')
@@ -70,6 +71,7 @@ const ReportedComment = ({data}) => {
 }
 
 
+// @ts-ignore
 const LastPublication = ({data}) => {
 
     const handleDelete = () => {
