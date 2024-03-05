@@ -30,7 +30,6 @@ function MobileHeader() {
             height={24}
             src="/logo.png"
             alt="Logo du ministère"
-            className="size-fit"
           />
           <p className="text-lg font-bold">Ressources</p>
         </div>
