@@ -146,7 +146,7 @@ export default function Home() {
       </section>
       {
         !currentUser &&
-        <section className="flex w-screen flex-col items-center py-8 bg-custom-blue-0 lg:-ml-[12.5%]">
+        <section className="flex w-full flex-col items-center py-8 bg-custom-blue-0 lg:-ml-[12.5%]">
         <Title>UNE RESSOURCE À PARTAGER ?</Title>
         <div className="mt-2 flex flex-col items-center justify-center gap-1 md:flex-row lg:gap-5">
           

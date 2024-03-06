@@ -18,7 +18,7 @@ function Nav() {
   };
 
   return (
-    <div className="w-screen bg-custom-blue-0">
+    <div className="w-full bg-custom-blue-0">
       <nav className="mx-auto flex h-20 justify-between lg:w-4/5">
         <ul className="flex w-2/3 items-center gap-2">
           <Link href={'/ressources?type=toutes'}>

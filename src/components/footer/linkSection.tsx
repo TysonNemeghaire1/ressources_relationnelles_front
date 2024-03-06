@@ -2,7 +2,7 @@ import React from "react";
 
 function LinkSection() {
   return (
-    <div className="w-screen bg-custom-blue-0 flex">
+    <div className="w-full bg-custom-blue-0 flex">
       <nav className="mx-auto justify-center grid grid-cols-1 gap-8 p-8 text-black sm:grid-cols-2 lg:w-4/5 lg:grid-cols-4">
         <section className="space-y-4">
           <h3 className="text-lg font-bold">Le ministère</h3>

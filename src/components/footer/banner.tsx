@@ -8,7 +8,7 @@ import {
 
 function Banner() {
   return (
-    <div className="flex w-screen items-center bg-footer-gradient min-h-24">
+    <div className="flex w-full items-center bg-footer-gradient min-h-24">
       <div className="mx-auto flex items-center justify-between flex-col lg:flex-row w-4/5">
         <p className="text-lg font-bold">SUIVEZ NOUS SUR LES RÉSEAUX SOCIAUX</p>
         <ul className="flex gap-3">

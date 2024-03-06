@@ -9,7 +9,7 @@ function Banner() {
   const { logout, currentUser } = useAuth()
 
   return (
-    <header className="w-screen bg-header-gradient min-h-40">
+    <header className="w-full bg-header-gradient min-h-40">
       <div className="mx-auto flex justify-between py-5 lg:w-4/5">
         <div className="flex w-1/2 flex-col">
               <Link href='/'>

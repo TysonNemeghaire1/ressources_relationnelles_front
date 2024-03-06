@@ -23,7 +23,7 @@ function MobileHeader() {
 
   return (
     <>
-      <header className="w-screen bg-header-gradient p-2 flex justify-between items-center">
+      <header className="w-full bg-header-gradient p-2 flex justify-between items-center">
         <div className="flex items-center gap-5">
           <Image
             width={64}
