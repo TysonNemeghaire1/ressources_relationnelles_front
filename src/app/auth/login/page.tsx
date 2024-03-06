@@ -21,8 +21,14 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { token, user } = await apiLogin(email, password);
+      const { token } = await apiLogin(email, password);
 
+      const user = {
+        name:'Jean Marco De la Vega',
+        email:'zadzad.dzefe@sza.fez',
+        id:'020022'
+      }
+      
       setCurrentUser(user)
       login(token, user);
       router.push('/');
