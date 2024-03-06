@@ -3,10 +3,12 @@
 import React, { useState } from "react";
 import SearchBar from "@/components/header/searchBar";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 function Nav() {
   const [showLabel, setShowLabel] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const currentUser = useAuth()
   const toggleLabel = () => {
     if (searchQuery) {
       return;
@@ -29,22 +31,27 @@ function Nav() {
               <span className="text-lg text-black">RESSOURCES</span>
             </li>
           </Link>
-          <Link href={'/ressources?type=favorites'}>
-            <li className="whitespace-pre-line rounded-lg p-3 hover:bg-custom-blue-4 hover:bg-opacity-15">
-              <span className="table text-sm font-bold text-custom-blue-4">
-              MES
-              </span>
-            <span className="text-lg text-black">FAVORIS</span>
-            </li>
-          </Link>
-          <Link href={'/ressources?type=myressources'}>
-            <li className="whitespace-pre-line rounded-lg p-3 hover:bg-custom-blue-4 hover:bg-opacity-15">
-              <span className="table text-sm font-bold text-custom-blue-4">
-              MES
-            </span>
-              <span className="text-lg text-black">RESSOURCES</span>
-            </li>         
-          </Link>
+          {
+            currentUser.currentUser && 
+              <>
+              <Link href={'/ressources?type=favorites'}>
+                <li className="whitespace-pre-line rounded-lg p-3 hover:bg-custom-blue-4 hover:bg-opacity-15">
+                  <span className="table text-sm font-bold text-custom-blue-4">
+                  MES
+                  </span>
+                  <span className="text-lg text-black">FAVORIS</span>
+                </li>
+              </Link>
+              <Link href={'/ressources?type=myressources'}>
+                <li className="whitespace-pre-line rounded-lg p-3 hover:bg-custom-blue-4 hover:bg-opacity-15">
+                  <span className="table text-sm font-bold text-custom-blue-4">
+                    MES
+                  </span>
+                  <span className="text-lg text-black">RESSOURCES</span>
+                </li>         
+              </Link>
+            </>
+          }
         </ul>
         <div className="flex w-1/3 items-center justify-end gap-2">
           <SearchBar

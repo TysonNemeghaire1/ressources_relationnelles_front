@@ -9,11 +9,12 @@ import { login as apiLogin } from '@/api/auth';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login, currentUser, setCurrentUser } = useAuth()
+  const { login, setCurrentUser } = useAuth()
+  const currentUser = useAuth()
   const router = useRouter()
 
   useEffect(()=>{
-    if(currentUser){
+    if(currentUser.currentUser){
       router.push('/')
     }
   },[])

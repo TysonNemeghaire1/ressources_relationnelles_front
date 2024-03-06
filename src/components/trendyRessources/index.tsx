@@ -3,13 +3,14 @@ import React, { useState } from "react";
 import { FaRegShareFromSquare, FaRegStar } from "react-icons/fa6";
 import Button from "@/components/trendyRessources/button";
 import RessourceCard from "@/components/cards/ressourceCard";
+import { useAuth } from "@/context/AuthContext";
 
 //TODO Changer le h2 en fonction du bouton
-
 export type filterType = "all" | "bookmarks" | "shared";
 
 function TrendyRessources() {
   const [filter, setFilter] = useState<filterType>("all");
+  const currentUser = useAuth()
   return (
     <main className="hover min-h-fit w-full lg:w-3/4 bg-trendy-ressource-gradient">
       <div className="flex items-center justify-between md:mx-5 mt-5">
@@ -20,20 +21,25 @@ function TrendyRessources() {
             value={"all"}
             active={filter}
           />
-          <Button
-            icon={<FaRegStar />}
-            text={"FAVORIS"}
-            onClick={setFilter}
-            value={"bookmarks"}
-            active={filter}
-          />
-          <Button
-            icon={<FaRegShareFromSquare />}
-            text={"PARTAGÉES"}
-            onClick={setFilter}
-            value={"shared"}
-            active={filter}
-          />
+          {
+            currentUser &&
+              <>
+              <Button
+              icon={<FaRegStar />}
+              text={"FAVORIS"}
+              onClick={setFilter}
+              value={"bookmarks"}
+              active={filter}
+              />
+              <Button
+              icon={<FaRegShareFromSquare />}
+              text={"PARTAGÉES"}
+              onClick={setFilter}
+              value={"shared"}
+              active={filter}
+              />
+            </>
+        }
         </div>
         <h2 className="xl:text-2xl lg:text-lg  hidden md:inline font-bold text-white">
           RESSOURCES À LA UNE
