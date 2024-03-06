@@ -23,7 +23,7 @@ export default function Register() {
                 <p className='h-[3vh]'>
                 </p>
                 <div className="grid grid-cols-2 gap-4 items-center justify-center">
-                  <button type="submit" className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700">S'inscrire</button>
+                  <button type="submit" className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700">S&apos;inscrire</button>
                   <Link href={'/auth/login'}>
                     <div className="text-sm text-indigo-600 hover:underline">Déjà un compte ? Se connecter</div>
                   </Link>

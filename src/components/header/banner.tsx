@@ -1,8 +1,13 @@
+'use client'
+
 import React from "react";
 import Image from "next/image";
 import Link from 'next/link';
+import { useAuth } from '@/context/AuthContext';
 
 function Banner() {
+  const { logout, currentUser } = useAuth()
+
   return (
     <header className="w-screen bg-header-gradient min-h-40">
       <div className="mx-auto flex justify-between py-5 lg:w-4/5">
@@ -14,7 +19,6 @@ function Banner() {
               height={34}
               src="/logo.png"
               alt="Logo du ministère"
-              className="size-fit"
             />
             <p className="max-w-lg">
               <span className="font-bold">
@@ -35,10 +39,31 @@ function Banner() {
                 ACCUEIL
               </li>
               </Link>
-              <Link href="/account" className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white">MON COMPTE</Link>
-              <li className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white">
-                DÉCONNEXION
-              </li>
+              {currentUser ? 
+                <>
+                  <Link href="/account">
+                    <li className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white cursor-pointer">
+                      MON COMPTE
+                    </li>
+                  </Link>
+                  <li onClick={logout} className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white cursor-pointer">
+                    DÉCONNEXION
+                  </li>
+                </> 
+                :
+                <>
+                  <Link href="/auth/login">
+                    <li className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white cursor-pointer">
+                      SE CONNECTER
+                    </li> 
+                  </Link>
+                  <Link href="/auth/register">
+                    <li className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white cursor-pointer">
+                      CRÉER UN COMPTE
+                    </li>
+                  </Link>
+                </>
+              }
             </ul>
           </nav>
         </div>
