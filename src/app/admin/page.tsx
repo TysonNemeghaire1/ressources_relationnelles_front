@@ -6,6 +6,8 @@ import Button from "@/components/lightButton/lightButton";
 import AdminPanel from '@/components/admin/adminPanel';
 import RessourceList from '@/components/list/ressourceList';
 import UserList from '@/components/list/userList';
+import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
+import { SetStateAction, useState } from "react";
 
 const sharedResources = [
     {
@@ -198,6 +200,12 @@ const sharedResources = [
 
 export default function Page() {
   
+  const [selectedValue, setSelectedValue] = useState('');
+
+  const handleChange = (event: { target: { value: SetStateAction<string>; }; }) => {
+      setSelectedValue(event.target.value);
+  }; 
+  
   const exportStatResources = () => {
     console.log("ClickBtnResources");
   };
@@ -210,93 +218,114 @@ export default function Page() {
         <main className="py-10">
             <h1 className="text-4xl text-gray-700 text-center font-light mb-4 align-top ">PANNEAU D'ADMINISTRATION</h1>
             <AdminPanel />
-            <div className='pt-8'>
-              <h2 className="text-4xl text-gray-700 font-light mb-4 align-top ">LISTE DES RESSOURCES</h2>
-              <p className='h-[1vh]'></p>
-              <div className="grid grid-cols-2 w-full">
-                <div className='font-bold'>
-                  Date du : &nbsp;
-                  <input type="date" />
-                  &nbsp; au &nbsp;
-                  <input type="date" />
+            
+            <div className="flex md:justify-between justify-center items-end flex-wrap">
+              <h2 className="pt-10 text-4xl text-gray-700 font-light mb-4 align-top py-2">LISTE DES RESSOURCES</h2>
+              <Button
+                text={"Exporter les statistiques des ressources"}
+                onClick={exportStatResources}
+                value={"na"}
+                active={"na"}
+              />
+            </div>
+
+            <div className="flex flex-wrap gap-5 justify-center md:justify-start items-center mb-5 font-bold uppercase">
+              <div>
+                <span>Catégorie</span>
+                <select value={selectedValue} onChange={handleChange} className="ml-5 border border-gray-300 rounded p-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none appearance-none">
+                  <option value="">Sélectionnez une option</option>
+                  <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                  <option value="option3">Option 3</option>
+                </select>
+              </div>
+              <div className='flex gap-5 flex-wrap'>
+                <span>Date du</span>
+                <input type="date" />
+                <span>au</span>
+                <input type="date" />
+              </div>
+            </div>
+
+            <div className="rounded p-2 mb-2 border border-custom-blue-0 border-2 flex flex-col">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-stat-ressources gap-1 rounded pb-2">
+                <div className="uppercase text-sm font-bold text-custom-blue-4 rounded p-2 text-center bg-custom-blue-0 flex justify-center items-center gap-2">
+                  ID
+                    <FaAngleUp className="text-xl text-custom-blue-2 hover:text-custom-blue-3" /> <FaAngleDown  className="text-xl text-custom-blue-2 hover:text-custom-blue-3" />
                 </div>
-                <div>
-                    <Button
-                        text={"Exporter les statistiques des ressources"}
-                        onClick={exportStatResources}
-                        value={"na"}
-                        active={"na"}
-                    />
+                <div className="uppercase text-sm font-bold text-custom-blue-4 rounded p-2 text-center bg-custom-blue-0 flex justify-center items-center gap-2">
+                  Nom de la ressource
+                    <FaAngleUp className="text-xl text-custom-blue-2 hover:text-custom-blue-3" /> <FaAngleDown  className="text-xl text-custom-blue-2 hover:text-custom-blue-3" />
+                </div>
+                <div className="uppercase text-sm font-bold text-custom-blue-4 rounded p-2 text-center bg-custom-blue-0 flex justify-center items-center gap-2">
+                  Auteur
+                    <FaAngleUp className="text-xl text-custom-blue-2 hover:text-custom-blue-3" /> <FaAngleDown  className="text-xl text-custom-blue-2 hover:text-custom-blue-3" />
+                </div>
+                <div className="uppercase text-sm font-bold text-custom-blue-4 rounded p-2 text-center bg-custom-blue-0 flex justify-center items-center gap-2">
+                  Catégorie
+                    <FaAngleUp className="text-xl text-custom-blue-2 hover:text-custom-blue-3" /> <FaAngleDown  className="text-xl text-custom-blue-2 hover:text-custom-blue-3" />
+                </div>
+                <div className="uppercase text-sm font-bold text-custom-blue-4 rounded p-2 text-center bg-custom-blue-0 flex justify-center items-center gap-2">
+                  Date
+                    <FaAngleUp className="text-xl text-custom-blue-2 hover:text-custom-blue-3" /> <FaAngleDown  className="text-xl text-custom-blue-2 hover:text-custom-blue-3" />
+                </div>
+                <div className="uppercase text-sm font-bold text-custom-blue-4 rounded p-2 text-center bg-custom-blue-0 flex justify-center items-center gap-2">
+                  Com.
+                    <FaAngleUp className="text-xl text-custom-blue-2 hover:text-custom-blue-3" /> <FaAngleDown  className="text-xl text-custom-blue-2 hover:text-custom-blue-3" />
                 </div>
               </div>
-              <p className='h-[1vh]'></p>
-              <table className='border border-blue-400'>
-                <thead className='text-blue-800 border border-blue-400'>
-                  <tr>
-                    <th>ID</th>
-                    <th>NOM DE LA RESSOURCE</th>
-                    <th>AUTEUR</th>
-                    <th>CATEGORIE</th>
-                    <th>DATE</th>
-                    <th>COMMENTAIRES</th>
-                  </tr>
-                </thead>
 
-                <tbody>
-                  {
-                      sharedResources.map((val, key) => {
-                          return (
-                            <RessourceList id={val.id} name={val.title} category={val.category} date={val.date} author={val.author} />
-                          )
-                      })
-                  }
-                </tbody>
-              </table>
+              {
+                sharedResources.map((val, key) => {
+                  return (
+                    <RessourceList id={val.id} name={val.title} category={val.category} date={val.date} author={val.author} />
+                  )
+                })
+              }
+            
             </div>
-            <div className='pt-8'>
-              <h2 className="text-4xl text-gray-700 font-light mb-4 align-top ">LISTE DES CITOYENS</h2>
-              <p className='h-[1vh]'></p>
-              <div className="grid grid-cols-2 w-full">
-                <div className='font-bold'>
-                  Date du : &nbsp;
-                  <input className='appearance-none' type="date" />
-                  &nbsp; au &nbsp;
-                  <input type="date" />
+              
+            <div className="mt-10 flex md:justify-between justify-center items-end flex-wrap">
+              <h2 className="pt-10 text-4xl text-gray-700 font-light mb-4 align-top py-2">LISTE DES CITOYENS</h2>
+              <Button
+                text={"Exporter les statistiques des citoyens"}
+                onClick={exportStatAccount}
+                value={"na"}
+                active={"na"}
+              />
+            </div>
+
+            
+            <div className="rounded p-2 mb-2 border border-custom-blue-0 border-2 flex flex-col">
+              <div className="grid grid-cols-2 md:grid-cols-stat-account gap-1 rounded pb-2">
+                <div className="uppercase text-sm font-bold text-custom-blue-4 rounded p-2 text-center bg-custom-blue-0 flex justify-center items-center gap-2">
+                  ID
+                    <FaAngleUp className="text-xl text-custom-blue-2 hover:text-custom-blue-3" /> <FaAngleDown  className="text-xl text-custom-blue-2 hover:text-custom-blue-3" />
                 </div>
-                <div>
-                  <Button
-                          text={"Exporter les statistiques des citoyens"}
-                          onClick={exportStatAccount}
-                          value={"na"}
-                          active={"na"}
-                      />
+                <div className="uppercase text-sm font-bold text-custom-blue-4 rounded p-2 text-center bg-custom-blue-0 flex justify-center items-center gap-2">
+                  Identifiant
+                    <FaAngleUp className="text-xl text-custom-blue-2 hover:text-custom-blue-3" /> <FaAngleDown  className="text-xl text-custom-blue-2 hover:text-custom-blue-3" />
+                </div>
+                <div className="uppercase text-sm font-bold text-custom-blue-4 rounded p-2 text-center bg-custom-blue-0 flex justify-center items-center gap-2">
+                  Email
+                    <FaAngleUp className="text-xl text-custom-blue-2 hover:text-custom-blue-3" /> <FaAngleDown  className="text-xl text-custom-blue-2 hover:text-custom-blue-3" />
+                </div>
+                <div className="uppercase text-sm font-bold text-custom-blue-4 rounded p-2 text-center bg-custom-blue-0 flex justify-center items-center gap-2">
+                  Inscription
+                    <FaAngleUp className="text-xl text-custom-blue-2 hover:text-custom-blue-3" /> <FaAngleDown  className="text-xl text-custom-blue-2 hover:text-custom-blue-3" />
                 </div>
               </div>
-              <p className='h-[1vh]'></p>
 
-              <table className='border border-blue-400'>
-                <thead className='text-blue-800 border border-blue-400'>
-                  <tr>
-                    <th>ID</th>
-                    <th>IDENTIFIANT</th>
-                    <th></th>
-                    <th></th>
-                    <th>EMAIL</th>
-                    <th>INSCRIPTION</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {
-                      connectedCitizens.map((val, key) => {
-                          return (
-                            <UserList id={val.id} login={val.login} mail={val.mail} inscription={val.inscription} />
-                          )
-                      })
-                  }
-                </tbody>
-              </table>
+              {
+                connectedCitizens.map((val, key) => {
+                    return (
+                      <UserList id={val.id} login={val.login} mail={val.mail} inscription={val.inscription} />
+                    )
+                })
+              }
+            
             </div>
+              
         </main>
     );
 }

@@ -10,10 +10,10 @@ const reportedComments = [{id:'10300220', date:'10/01/2024', name:'Comment dépe
 
 export default function AdminPanel(){
     return (
-            <div className='flex justiffy-center p-5 flex-wrap'>
-                <div>
-                    <div className="uppercase font-bold text-center mb-2">Mes dernières publications</div>
-                    <div className="max-h-60 overflow-auto">
+            <div className='flex justify-between items-start p-5 flex-wrap'>
+                <div className="md:w-1/4 w-full">
+                    <div className="uppercase font-bold text-center mb-2">Ressources à valider</div>
+                    <div className="overflow-auto">
                         {
                             lastPublications.map((val, key)=>{
                                 return(
@@ -23,9 +23,9 @@ export default function AdminPanel(){
                         }   
                     </div>
                 </div>
-                <div>
-                    <div className="uppercase font-bold text-center mb-2">Mes dernières publications</div>
-                    <div className="max-h-60 overflow-auto p-2">
+                <div className="md:w-3/4 p-5 bg-custom-blue-0 rounded">
+                    <div className="uppercase font-bold text-center mb-2">Commentaires signalés</div>
+                    <div className="overflow-auto p-2">
                     {
                         reportedComments.map((val,key)=>{
                             return(

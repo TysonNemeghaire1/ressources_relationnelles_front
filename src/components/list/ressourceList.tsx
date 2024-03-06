@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 interface RessourceListProps {
-    id: string;
+    id: string; 
     name: string;
     category: string;
     date: string;
@@ -15,14 +15,14 @@ const RessourceList: React.FC<RessourceListProps> = ({ id, name, category, date,
     str.length <= num ? str : str.slice(0, num) + "...";
 
   return (
-    <tr>
-      <td className="w-48 text-center">#{id}</td>
-      <td className="w-96 text-left">{name}</td>
-      <td className="w-48 text-center">{author}</td>
-      <td className="w-48 text-center">{category}</td>
-      <td className="w-48 text-center">{date}</td>
-      <td className="w-48 text-right">99</td>
-    </tr>
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-stat-ressources gap-1 rounded hover:bg-custom-blue-0 p-1">
+      <div>#{id}</div>
+      <div>{name}</div>
+      <div>{author}</div>
+      <div>{category}</div>
+      <div className="md:text-center">{date}</div>
+      <div className="md:text-center">999</div>
+    </div>
   );
 };
 
