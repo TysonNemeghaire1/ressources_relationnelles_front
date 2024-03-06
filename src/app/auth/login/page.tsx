@@ -42,8 +42,10 @@ export default function Login() {
       <h1 className="text-4xl text-gray-700 text-center font-light mb-4 align-top pt-[5vh]">CONNEXION</h1>
       <div className="flex flex-col items-center justify-center p-4 white">
         <form onSubmit={handleSubmit} className="space-y-4">
+
           <div className="flex flex-col md:flex-row gap-2 auto-rows-auto">
-            <div className='flex items-center justify-center h-[30vh]  md:h-[40vh] w-[40vh]'>
+
+            <div className='flex items-center justify-center h-[30vh]  md:h-[40vh] w-2/5'>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">Adresse mail</label>
@@ -61,15 +63,18 @@ export default function Login() {
                   </Link>
                 </div>
               </div>
+
             </div>
-            <div className='flex items-center justify-center py-10 w-auto  md:py-10 px-10'>
+
+            <div className='flex items-center justify-center py-10 w-1/5  md:py-10 px-10'>
               <div className='bg-blue-500 flex justify-center items-center md:h-full w-px  max-sm:w-full h-px'>
                 <div className='bg-white z-10 text-2xl text-center max-sm:w-2/12'>
                   OU
                 </div>
               </div>
             </div>
-            <div className='flex items-center justify-center h-1/3 w-auto  md:py-24 w-full'>
+
+            <div className='flex items-center justify-center h-1/3 md:py-24 w-2/5'>
               <div>
                 <Image
                   width={240}
@@ -80,6 +85,7 @@ export default function Login() {
                 <a href='https://franceconnect.gouv.fr/'>Qu&apos;est-ce que FranceConnect ?</a>
               </div>
             </div>
+            
           </div>
         </form>
       </div>

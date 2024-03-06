@@ -16,7 +16,7 @@ function Button({ icon, text, onClick, value, active }: Props) {
   return (
     <button
       onClick={handleClick}
-      className={`flex items-center px-10 m-2 gap-1 rounded p-2 hover:opacity-70 ${
+      className={`flex uppercase items-center px-10 m-2 gap-1 rounded p-2 hover:opacity-70 ${
         active === value
           ? "bg-custom-blue-0 text-custom-blue-3"
           : "text-custom-blue-4"

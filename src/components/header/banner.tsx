@@ -12,7 +12,9 @@ function Banner() {
     <header className="w-screen bg-header-gradient min-h-40">
       <div className="mx-auto flex justify-between py-5 lg:w-4/5">
         <div className="flex w-1/2 flex-col">
+              <Link href='/'>
           <p className="w-16 text-4xl">(RE)SSOURCES RELATIONNELLES</p>
+          </Link>
           <div className="flex items-center gap-2 pt-2">
             <Image
               width={80}

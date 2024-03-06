@@ -7,6 +7,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import LastestPublications from "@/components/lastestPublications";
+import Link from "next/link";
 
 export default function Home() {
   const {currentUser} = useAuth()
@@ -148,13 +149,14 @@ export default function Home() {
         <section className="flex w-screen flex-col items-center py-8 bg-custom-blue-0 lg:-ml-[12.5%]">
         <Title>UNE RESSOURCE À PARTAGER ?</Title>
         <div className="mt-2 flex flex-col items-center justify-center gap-1 md:flex-row lg:gap-5">
-          <button className="rounded bg-white p-2 font-bold hover:opacity-70">
-            CONNEXION
-          </button>
+          
+        <Link href={'/auth/login'} className=" uppercase rounded bg-white p-2 font-bold hover:opacity-70">
+          Connexion
+          </Link>
           <p>OU</p>
-          <button className="rounded bg-white p-2 font-bold hover:opacity-70">
-            CRÉER VOTRE COMPTE
-          </button>
+        <Link href={'/auth/register'} className=" uppercase rounded bg-white p-2 font-bold hover:opacity-70">
+          Créer votre compte
+          </Link>
         </div>
       </section>
       }

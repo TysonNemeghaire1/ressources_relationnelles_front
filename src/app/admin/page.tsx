@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react';
 import Title from '@/components/texts/titlePage';
+import Button from "@/components/lightButton/lightButton";
 import AdminPanel from '@/components/admin/adminPanel';
 import RessourceList from '@/components/list/ressourceList';
 import UserList from '@/components/list/userList';
@@ -194,6 +197,15 @@ const sharedResources = [
   ];
 
 export default function Page() {
+  
+  const exportStatResources = () => {
+    console.log("ClickBtnResources");
+  };
+  const exportStatAccount = () => {
+    console.log("ClickBtnAccount");
+  };
+
+
     return (
         <main className="py-10">
             <h1 className="text-4xl text-gray-700 text-center font-light mb-4 align-top ">PANNEAU D'ADMINISTRATION</h1>
@@ -209,7 +221,12 @@ export default function Page() {
                   <input type="date" />
                 </div>
                 <div>
-                  <button type="submit" className="px-4 py-2 bg-indigo-200 text-indigo-800 rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700">EXPORTER LES STATISTIQUES DES RESSOURCES</button>
+                    <Button
+                        text={"Exporter les statistiques des ressources"}
+                        onClick={exportStatResources}
+                        value={"na"}
+                        active={"na"}
+                    />
                 </div>
               </div>
               <p className='h-[1vh]'></p>
@@ -247,7 +264,12 @@ export default function Page() {
                   <input type="date" />
                 </div>
                 <div>
-                  <button type="submit" className="px-4 py-2 bg-indigo-200 text-indigo-800 rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700">EXPORTER LES STATISTIQUES DES CITOYENS</button>
+                  <Button
+                          text={"Exporter les statistiques des citoyens"}
+                          onClick={exportStatAccount}
+                          value={"na"}
+                          active={"na"}
+                      />
                 </div>
               </div>
               <p className='h-[1vh]'></p>
