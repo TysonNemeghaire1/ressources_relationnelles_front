@@ -5,8 +5,10 @@ import Image from "next/image";
 import { RxHamburgerMenu } from "react-icons/rx";
 import SearchBar from "@/components/header/searchBar";
 import Link from "next/link";
+import { useAuth } from '@/context/AuthContext';
 
 function MobileHeader() {
+  const { logout, currentUser } = useAuth()
   const [showLabel, setShowLabel] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const toggleLabel = () => {
@@ -39,7 +41,7 @@ function MobileHeader() {
             showLabel={showLabel}
             onChange={handleChangeSearch}
             dark={false}
-          />
+          /> 
           <button
             onClick={() => setShowList(!showList)}
             className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white"
@@ -64,6 +66,9 @@ function MobileHeader() {
                 ACCUEIL
               </li>
             </Link>
+            
+            {currentUser ? 
+                <>
             <Link href="/account">
               <li className="font-bold text-white rounded-lg p-3 hover:bg-custom-blue-4 hover:bg-opacity-15">
                 MON COMPTE
@@ -72,6 +77,21 @@ function MobileHeader() {
             <li className="font-bold text-white rounded-lg p-3 hover:bg-custom-blue-4 hover:bg-opacity-15">
               DÉCONNEXION
             </li>
+                </> 
+                :
+                <>
+              <Link href="/auth/login">
+                <li className="font-bold text-white rounded-lg p-3 hover:bg-custom-blue-4 hover:bg-opacity-15">
+                  SE CONNECTER
+                </li> 
+              </Link>
+              <Link href="/auth/register">
+                <li className="font-bold text-white rounded-lg p-3 hover:bg-custom-blue-4 hover:bg-opacity-15">
+                  CRÉER UN COMPTE
+                </li>
+              </Link>
+              </>
+            }
             <Link href={"/ressources?type=toutes"}>
               <li className="font-bold text-white rounded-lg p-3 hover:bg-custom-blue-4 hover:bg-opacity-15">
                 TOUTES LES RESSOURCES
