@@ -23,7 +23,7 @@ export default function RootLayout({
         <body className={inter.className}>
           <Header />
           <div className="w-full bg-white">
-            <div className="mx-auto lg:w-4/5 text-black">{children}</div>
+            <div className="mx-auto lg:w-4/5 text-black py-8">{children}</div>
           </div>
           <Footer />
         </body>
