@@ -1,6 +1,8 @@
 import React from 'react';
 import Title from '@/components/texts/titlePage';
 import AdminPanel from '@/components/admin/adminPanel';
+import RessourceList from '@/components/list/ressourceList';
+import UserList from '@/components/list/userList';
 
 const sharedResources = [
     {
@@ -140,11 +142,139 @@ const sharedResources = [
       }
   ];
 
+  const connectedCitizens = [
+    {
+      id: '001',
+      login: 'Un login',
+      mail: 'a@a.fr',
+      inscription: '05/03/2024',
+    },
+    {
+      id: '002',
+      login: 'Un login',
+      mail: 'b@b.fr',
+      inscription: '05/03/2024',
+    },
+    {
+      id: '003',
+      login: 'Un login',
+      mail: 'c@c.fr',
+      inscription: '05/03/2024',
+    },
+    {
+      id: '004',
+      login: 'Un login',
+      mail: 'd@d.fr',
+      inscription: '05/03/2024',
+    },
+    {
+      id: '005',
+      login: 'Un login',
+      mail: 'e@e.fr',
+      inscription: '05/03/2024',
+    },
+    {
+      id: '006',
+      login: 'Un login',
+      mail: 'f@f.fr',
+      inscription: '05/03/2024',
+    },
+    {
+      id: '007',
+      login: 'Un login',
+      mail: 'g@g.fr',
+      inscription: '05/03/2024',
+    },
+    {
+      id: '008',
+      login: 'Un login',
+      mail: 'h@h.fr',
+      inscription: '05/03/2024',
+    },
+  ];
+
 export default function Page() {
     return (
         <main className="py-10">
-            <Title>Panneau d&apos;administration</Title>
+            <h1 className="text-4xl text-gray-700 text-center font-light mb-4 align-top ">PANNEAU D'ADMINISTRATION</h1>
             <AdminPanel />
+            <div className='pt-8'>
+              <h2 className="text-4xl text-gray-700 font-light mb-4 align-top ">LISTE DES RESSOURCES</h2>
+              <p className='h-[1vh]'></p>
+              <div className="grid grid-cols-2 w-full">
+                <div className='font-bold'>
+                  Date du : &nbsp;
+                  <input type="date" />
+                  &nbsp; au &nbsp;
+                  <input type="date" />
+                </div>
+                <div>
+                  <button type="submit" className="px-4 py-2 bg-indigo-200 text-indigo-800 rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700">EXPORTER LES STATISTIQUES DES RESSOURCES</button>
+                </div>
+              </div>
+              <p className='h-[1vh]'></p>
+              <table className='border border-blue-400'>
+                <thead className='text-blue-800 border border-blue-400'>
+                  <tr>
+                    <th>ID</th>
+                    <th>NOM DE LA RESSOURCE</th>
+                    <th>AUTEUR</th>
+                    <th>CATEGORIE</th>
+                    <th>DATE</th>
+                    <th>COMMENTAIRES</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {
+                      sharedResources.map((val, key) => {
+                          return (
+                            <RessourceList id={val.id} name={val.title} category={val.category} date={val.date} author={val.author} />
+                          )
+                      })
+                  }
+                </tbody>
+              </table>
+            </div>
+            <div className='pt-8'>
+              <h2 className="text-4xl text-gray-700 font-light mb-4 align-top ">LISTE DES CITOYENS</h2>
+              <p className='h-[1vh]'></p>
+              <div className="grid grid-cols-2 w-full">
+                <div className='font-bold'>
+                  Date du : &nbsp;
+                  <input className='appearance-none' type="date" />
+                  &nbsp; au &nbsp;
+                  <input type="date" />
+                </div>
+                <div>
+                  <button type="submit" className="px-4 py-2 bg-indigo-200 text-indigo-800 rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700">EXPORTER LES STATISTIQUES DES CITOYENS</button>
+                </div>
+              </div>
+              <p className='h-[1vh]'></p>
+
+              <table className='border border-blue-400'>
+                <thead className='text-blue-800 border border-blue-400'>
+                  <tr>
+                    <th>ID</th>
+                    <th>IDENTIFIANT</th>
+                    <th></th>
+                    <th></th>
+                    <th>EMAIL</th>
+                    <th>INSCRIPTION</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {
+                      connectedCitizens.map((val, key) => {
+                          return (
+                            <UserList id={val.id} login={val.login} mail={val.mail} inscription={val.inscription} />
+                          )
+                      })
+                  }
+                </tbody>
+              </table>
+            </div>
         </main>
     );
 }

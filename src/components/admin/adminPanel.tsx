@@ -4,9 +4,9 @@ import React from 'react';
 import Link from "next/link";
 import { FaRegTrashCan, FaSquareCheck } from "react-icons/fa6";
 
-const lastPublications = [{id:'10300220', date:'10/01/2024', title:'Comment changer la roue'},{date:'10/01/2024', title:"Horaires d'ouverture du"},{id:'10300220', date:'10/01/2024', title:'Comment dépeucer un chevreuil '},{id:'10300220', date:'10/01/2024', title:"Ouvrir une maison close"}, {id:'10300220', date:'10/01/2024', title:'Tuto faire du paté'}]
+const lastPublications = [{id:'10300220', date:'10/01/2024', title:'Comment changer la roue'},{date:'10/01/2024', title:"Horaires d'ouverture du"},{id:'10300220', date:'10/01/2024', title:'Comment dépecer un chevreuil '},{id:'10300220', date:'10/01/2024', title:"Ouvrir une maison close"}, {id:'10300220', date:'10/01/2024', title:'Tuto faire du paté'}]
 
-const reportedComments = [{id:'10300220', date:'10/01/2024', name:'Comment dépeucer un chevreuil' ,content:'Ah batard tu fumes', author:'Francis Ngannou'},{date:'10/01/2024', name:"Ouvrir une maison close : mode d'emploi", content:"Horaires d'ouverture du", author:'Francis Ngannou'},{id:'10300220', date:'10/01/2024', name:"Horaires d'ouverture du centre de natation", content:'Comment dépeucer un chevreuil ', author:'Francis Ngannou'},{id:'10300220', name:'Fermeture de la boucherie', date:'10/01/2024', content:"Ouvrir une maison close", author:'Francis Ngannou'}, {id:'10300220',name:'Tuto faire du paté de campagne rapido', date:'10/01/2024', content:'Tuto faire du paté', author:'Francis Ngannou'}]
+const reportedComments = [{id:'10300220', date:'10/01/2024', name:'Comment dépecer un chevreuil' ,content:'Ah batard tu fumes', author:'Francis Ngannou'},{date:'10/01/2024', name:"Ouvrir une maison close : mode d'emploi", content:"Horaires d'ouverture du", author:'Francis Ngannou'},{id:'10300220', date:'10/01/2024', name:"Horaires d'ouverture du centre de natation", content:'Comment dépecer un chevreuil ', author:'Francis Ngannou'},{id:'10300220', name:'Fermeture de la boucherie', date:'10/01/2024', content:"Ouvrir une maison close", author:'Francis Ngannou'}, {id:'10300220',name:'Tuto faire du paté de campagne rapido', date:'10/01/2024', content:'Tuto faire du paté', author:'Francis Ngannou'}]
 
 export default function AdminPanel(){
     return (
