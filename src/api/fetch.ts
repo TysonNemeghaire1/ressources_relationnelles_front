@@ -49,3 +49,12 @@ const patchContent = (url: string, body: Object) => {
     body: JSON.stringify(body),
   });
 };
+
+const deleteContent = (url: string) => {
+  return fetch(`http://localhost:8000/api/${url}`, {
+    method: "DELETE",
+    headers: new Headers({
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    }),
+  });
+};
