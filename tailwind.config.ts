@@ -25,6 +25,10 @@ const config: Config = {
         "custom-blue-3": "#4F67EC",
         "custom-blue-4": "#003A91",
       },
+      gridTemplateColumns: {
+        'stat-ressources': '7em auto 15% 12% 10% 10%',
+        'stat-account': '7em auto 30% 15%',
+      }
     },
   },
       plugins: [

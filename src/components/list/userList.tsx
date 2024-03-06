@@ -14,14 +14,12 @@ const UserList: React.FC<UserListProps> = ({ id, login, mail, inscription }) => 
     str.length <= num ? str : str.slice(0, num) + "...";
 
   return (
-    <tr>
-      <td className="w-48 text-center">{id}</td>
-      <td className="w-48 text-center">{login}</td>
-      <td className="w-96 text-center"></td>
-      <td className="w-48 text-center"></td>
-      <td className="w-48 text-center">{mail}</td>
-      <td className="w-48 text-center">{inscription}</td>
-    </tr>
+    <div className="grid grid-cols-2 md:grid-cols-stat-account gap-1 rounded hover:bg-custom-blue-0 p-1">
+      <div>{id}</div>
+      <div>{login}</div>
+      <div>{mail}</div>
+      <div className="md:text-center">{inscription}</div>
+    </div>
   );
 };
 
