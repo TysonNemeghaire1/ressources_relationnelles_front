@@ -11,9 +11,12 @@ export async function generateStaticParams() {
         id: resource.id,
     }))
 }
+// Définition de l'interface pour params
+interface Params {
+  id: string;
+}
 
-export default function Page({params}) {
-    return (
-        <ClientPage params={params} />
-    );
+// Application du type à la fonction Page
+export default function Page({ params }: { params: Params }) {
+    return <ClientPage params={params} />;
 }
