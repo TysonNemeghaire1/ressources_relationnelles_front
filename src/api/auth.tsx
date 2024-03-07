@@ -1,10 +1,17 @@
 import { jwtDecode } from "jwt-decode";
 
+interface DecodedToken {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+}
+
 /**
  * Effectue une requête d'authentification au backend.
- * @param {string} email L'email de l'utilisateur.
- * @param {string} password Le mot de passe de l'utilisateur.
- * @returns {Promise<{token: string, user: object}>} Un objet contenant le token et les détails de l'utilisateur.
+ * @param {string} email
+ * @param {string} password
+ * @returns {Promise<{token: string, user: object}>}
  */
 export async function login(email:string, password:string) {
     try {
@@ -19,7 +26,7 @@ export async function login(email:string, password:string) {
         const data = await response.json();
 
         if (response.ok) {
-            const decodedToken = jwtDecode(data.token)
+            const decodedToken:DecodedToken = jwtDecode(data.token)
             const user = {
                 id: decodedToken?.id,
                 name: `${decodedToken?.firstName} ${decodedToken?.lastName}`,

@@ -2,15 +2,8 @@
 import { getRessourcesById } from "@/api/ressources";
 import ActionRessource from "@/components/actionRessource";
 import { formatDate } from "@/hooks/date";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaRegStar,FaCheck,FaLink,FaCircleArrowRight,FaTriangleExclamation,FaCommentDots    } from "react-icons/fa6";
-
-// export async function handler(req, res) {
-//     const { id } = req.query;
-//     const data = await fetch(`https://localhso/api/ressource/${id}`).then(res => res.json());
-//     res.status(200).json(data);
-// }
 
 const discussion = [
     {
@@ -34,13 +27,21 @@ const discussion = [
     {
         id: '4',
         datetime: '05/03/2024 13:50',
-        author: 'Fatima Salami',
+        author: 'Fatima Alami',
         content: 'Places disponibles !',
     },
 ]
 
+interface Article {
+    title: string;
+    content: string;
+    author:string,
+    publish_date:any,
+    category:string,
+}
+
 export default function Page({params}: { params: { id: string } }) {
-    const [article, setArticle] = useState()
+    const [article, setArticle] = useState<Article | null>(null);
     const addFavorite = () => {
         console.log("addFavorite");
     };
@@ -64,7 +65,6 @@ export default function Page({params}: { params: { id: string } }) {
             </h1>
             <div className="flex gap-5 flex-col lg:flex-row">
                 <div className="w-full lg:w-4/5 flex flex-col items-center">
-                    {/* <Image className="object-cover my-5" width={1000} height={300} src='/corgi.jpeg' alt={"Animal"}/> */}
                     <p className="text-black text-justify">{article?.content}</p>
                 </div>
                 <aside className="lg:w-1/4 lg:block md:flex items-start md:gap-5">

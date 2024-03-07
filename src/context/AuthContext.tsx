@@ -2,7 +2,6 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import {jwtDecode} from 'jwt-decode';
 
-
 interface TokenPayload {
     user: {
         id: string;
@@ -11,11 +10,8 @@ interface TokenPayload {
     };
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
 interface AuthContextType {
-    id: any;
-    currentUser: User | null; // Supposons que vous avez un type User défini quelque part
+    currentUser: User | null;
     token: string;
     login: (token: string) => void;
     logout: () => void;
@@ -28,6 +24,8 @@ type User = {
     id: string;
     email: string;
 };
+
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [currentUser, setCurrentUser] = useState<any | null>(null);

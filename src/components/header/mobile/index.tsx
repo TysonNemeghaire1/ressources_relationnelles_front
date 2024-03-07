@@ -102,7 +102,7 @@ function MobileHeader() {
                 MES FAVORIS
               </li>
             </Link>
-            <Link href={"/ressources?type=myressources"}>
+            <Link href={"/ressources?type=me"}>
               <li className="font-bold text-white rounded-lg p-3 hover:bg-custom-blue-4 hover:bg-opacity-15">
                 MES RESSOURCES
               </li>

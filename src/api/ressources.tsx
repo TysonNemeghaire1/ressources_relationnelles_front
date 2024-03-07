@@ -1,7 +1,7 @@
 import { getContent } from "./fetch";
 
-export async function getRessources(page=1) {
-    const data = getContent(`resources?page=${page}`)
+export async function getRessources() {
+    const data = getContent(`resources`)
     return data
 }
 
