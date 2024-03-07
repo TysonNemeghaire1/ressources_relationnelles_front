@@ -67,7 +67,7 @@ function MobileHeader() {
               </li>
             </Link>
             
-            {currentUser ? 
+            {currentUser?.id ? 
                 <>
             <Link href="/account">
               <li className="font-bold text-white rounded-lg p-3 hover:bg-custom-blue-4 hover:bg-opacity-15">

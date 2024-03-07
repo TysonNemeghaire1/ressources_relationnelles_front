@@ -3,11 +3,12 @@ import ActionRessource from "@/components/actionRessource";
 import TrendyRessources from "@/components/trendyRessources";
 import Title from "@/components/texts/titlePage";
 import RessourceCard from "@/components/cards/ressourceCard";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import LastestPublications from "@/components/lastestPublications";
 import Link from "next/link";
+import { getConnectedContent, getContent } from "@/api/fetch";
 
 export default function Home() {
   const {currentUser} = useAuth()
@@ -16,6 +17,18 @@ export default function Home() {
   const handlePublish = () => {
     router.push('/ressource/create')
   }
+
+
+  useEffect(()=>{
+    const data = getConnectedContent('resources?page=1').then((response)=>{
+      return response.json()
+    }).then((value)=>{
+      console.log(value)
+    })
+    
+    
+    console.log(currentUser)
+  },[])
   
   return (
     <>
@@ -25,7 +38,7 @@ export default function Home() {
         <TrendyRessources />
         <aside className="hidden lg:block lg:w-1/4">
           <p>Bienvenue</p>
-          <p>{currentUser?.name}</p>
+          <p>{`${currentUser?.firstName} ${currentUser?.lastName}`}</p>
           <ActionRessource action={"PUBLIER"} item={"UNE NOUVELLE RESSOURCE"} handleClick={handlePublish} />
           <LastestPublications/>
         </aside>
@@ -145,8 +158,8 @@ export default function Home() {
         </div>
       </section>
       {
-        !currentUser &&
-        <section className="flex flex-col items-center py-8 bg-custom-blue-0">
+        !currentUser?.id &&
+        <section className="flex w-full flex-col items-center py-8 bg-custom-blue-0 lg:-ml-[12.5%]">
         <Title>UNE RESSOURCE À PARTAGER ?</Title>
         <div className="mt-2 flex flex-col items-center justify-center gap-1 md:flex-row lg:gap-5">
           

@@ -41,7 +41,7 @@ function Banner() {
                 ACCUEIL
               </li>
               </Link>
-              {currentUser ? 
+              {currentUser?.id ? 
                 <>
                   <Link href="/account">
                     <li className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white cursor-pointer">
