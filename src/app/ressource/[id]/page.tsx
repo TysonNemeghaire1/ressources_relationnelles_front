@@ -1,18 +1,16 @@
+'use client'
+import { getRessourcesById } from "@/api/ressources";
 import ActionRessource from "@/components/actionRessource";
+import { formatDate } from "@/hooks/date";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { FaRegStar,FaCheck,FaLink,FaCircleArrowRight,FaTriangleExclamation,FaCommentDots    } from "react-icons/fa6";
 
-export async function generateStaticParams() {
-    //const resource = await fetch('https://.../resource').then((res) => res.json())
-    //TODO: faire un vrais appel
-    let resource = [{id: '1'}]
-    for (let i = 1; i < 20; ++i) {
-        resource.push({id: i.toString()})
-    }
-    return resource.map((resource: { id: string; }) => ({
-        id: resource.id,
-    }))
-}
+// export async function handler(req, res) {
+//     const { id } = req.query;
+//     const data = await fetch(`https://localhso/api/ressource/${id}`).then(res => res.json());
+//     res.status(200).json(data);
+// }
 
 const discussion = [
     {
@@ -42,57 +40,32 @@ const discussion = [
 ]
 
 export default function Page({params}: { params: { id: string } }) {
-    
-  const addFavorite = () => {
-    console.log("addFavorite");
-  };
+    const [article, setArticle] = useState()
+    const addFavorite = () => {
+        console.log("addFavorite");
+    };
+
+    const getData = async () =>{
+        await getRessourcesById(params.id).then((response)=>{
+            setArticle(response)
+        })
+    }
+
+    useEffect(()=>{
+        if(!params.id) return
+        getData()
+    },[])
 
     return (
         <div className="h-full px-5 py-5 flex flex-col">
             <h1 className="flex gap-5 items-center text-black text-[40px] w-full">
                 <FaRegStar />
-                <span>Nom de la ressource <span className="text-sm">(post:{params.id})</span></span>
-                
+                <span>{article?.title}</span>
             </h1>
             <div className="flex gap-5 flex-col lg:flex-row">
                 <div className="w-full lg:w-4/5 flex flex-col items-center">
-                    <Image className="object-cover my-5" width={1000} height={300} src='/corgi.jpeg' alt={"Animal"}/>
-                    <p className="text-black text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Integer gravida tellus a dolor fermentum fermentum. Vestibulum a neque eu ex accumsan dictum.
-                        Curabitur nunc felis, cursus et commodo non, eleifend non mi. Pellentesque suscipit posuere
-                        varius. Etiam porttitor molestie ipsum, <strong>in pellentesque felis ultrices eu. Ut sed ex nunc.
-                        Vestibulum viverra ipsum vel sem malesuada maximus tincidunt ut est.</strong> In hac habitasse platea
-                        dictumst. Maecenas hendrerit pretium massa ut sodales. Aliquam eleifend maximus congue.
-                        Pellentesque lacinia malesuada erat. Fusce eu risus molestie, mollis orci eget, porta purus.
-                        Donec ex leo, malesuada vitae mollis quis, venenatis vel ligula. Aliquam placerat et ex quis
-                        accumsan. Pellentesque eu lobortis urna, sed dictum leo. <br />
-                        Duis blandit ultricies metus in luctus. <br />Suspendisse vitae erat ultrices, consequat augue nec,
-                        accumsan eros. Duis venenatis quis neque in commodo. Sed non urna eleifend, feugiat nisi ac,
-                        sodales diam. <u>Maecenas nec hendrerit justo, nec efficitur quam. </u>Integer velit elit, varius et
-                        sagittis ut, consectetur eget ex. In ac semper est, eu molestie neque. Proin ornare, urna sed
-                        tincidunt feugiat, nisi urna molestie neque, elementum rutrum ante tellus ac risus. Praesent
-                        vitae pretium tellus, vitae commodo urna. <br /><br />
-                        Proin et turpis sed augue pellentesque iaculis. Suspendisse potenti. In sodales est at
-                        pellentesque dignissim. Aliquam eu est a arcu imperdiet sollicitudin. Sed hendrerit, odio
-                        viverra convallis condimentum, lorem est finibus lorem, id varius ligula neque at purus. Nullam
-                        tempus purus eros, vel sodales lorem aliquam eu. Proin dictum, libero mollis condimentum
-                        aliquet, tellus ipsum porta <em>purus, non sagittis arcu lacus ac nisi. Nunc ac porttitor</em> ligula.
-                        Vivamus sapien nisl, sodales eu lectus elementum, rutrum consequat libero. Suspendisse potenti.
-                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                        Donec dolor justo, tincidunt sed lorem non, eleifend pulvinar enim. Phasellus aliquet fringilla
-                        facilisis. Nulla facilisi. Sed pharetra leo vel accumsan pretium. Nulla mattis vel diam a
-                        vehicula. Vestibulum ut dolor pellentesque, dignissim sem eget, convallis nisl. <br /><br />
-                        Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque congue nec odio in suscipit. Morbi
-                        rhoncus ut nisl vel interdum. Pellentesque id quam iaculis, ornare neque cursus, vehicula nibh.
-                        Donec hendrerit nec lectus ut ultrices. Proin hendrerit consequat aliquam. Cras molestie
-                        imperdiet scelerisque. Cras lobortis lobortis sapien viverra ullamcorper. Nunc luctus enim eget
-                        placerat ornare. Sed placerat, sapien ac suscipit efficitur, enim velit euismod arcu, eget
-                        volutpat metus erat pulvinar arcu. Maecenas tincidunt luctus justo, eget rhoncus velit mollis
-                        et. Donec rhoncus ligula id convallis gravida. Sed sollicitudin vulputate enim, ultrices
-                        facilisis lectus egestas at. Mauris feugiat erat id mauris euismod, vel rutrum augue feugiat.
-                        Duis ut sem eget quam semper aliquam. Nulla egestas mollis lacus, tincidunt faucibus augue
-                        blandit ut. Pellentesque bibendum diam nec facilisis dignissim. Nullam ut tempor purus, quis
-                        bibendum lacus. Nam finibus leo vel tristique vehicula.</p>
+                    {/* <Image className="object-cover my-5" width={1000} height={300} src='/corgi.jpeg' alt={"Animal"}/> */}
+                    <p className="text-black text-justify">{article?.content}</p>
                 </div>
                 <aside className="lg:w-1/4 lg:block md:flex items-start md:gap-5">
                     <div className="md:w-2/4 lg:w-full">
@@ -106,9 +79,9 @@ export default function Page({params}: { params: { id: string } }) {
                         </div>
                         <div className="flex flex-col my-2 justify-center items-center my-10">
                             <h2 className="font-bold uppercase">Informations</h2>
-                            <div className="flex flex-col my-2 justify-center items-center"><span className="text-custom-blue-4 font-bold">Auteur</span><span>FanDoggo</span></div>
-                            <div className="flex flex-col my-2 justify-center items-center"><span className="text-custom-blue-4 font-bold">Date de publication</span><span>06/03/2024</span></div>
-                            <div className="flex flex-col my-2 justify-center items-center"><span className="text-custom-blue-4 font-bold">Catégorie</span><span>Animaux</span></div>
+                            <div className="flex flex-col my-2 justify-center items-center"><span className="text-custom-blue-4 font-bold">Auteur</span><span>{article?.author}</span></div>
+                            <div className="flex flex-col my-2 justify-center items-center"><span className="text-custom-blue-4 font-bold">Date de publication</span><span>{formatDate(article?.publish_date?.date)}</span></div>
+                            <div className="flex flex-col my-2 justify-center items-center"><span className="text-custom-blue-4 font-bold">Catégorie</span><span>{article?.category}</span></div>
                         </div>
                         <div className="cursor-pointer flex-wrap flex uppercase items-center px-4 my-2 gap-1 rounded p-2 hover:opacity-70 bg-custom-blue-0 text-custom-blue-3">
                             <FaLink className="text-3xl mr-2"/> Fichier 
