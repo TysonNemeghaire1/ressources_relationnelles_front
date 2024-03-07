@@ -1,14 +1,15 @@
 "use client";
+import { formatDate } from "@/hooks/date";
 import Link from "next/link";
 import React from "react";
 
 interface DataProps {
-    id: string;
-    name: string;
-    category: string;
-    date: string;
-    author: string;
-    content: string;
+  id: string;
+  title: string;
+  category: string;
+  publish_date: any;
+  author: string;
+  content: string;
 }
 
 interface RessourceCardProps {
@@ -29,13 +30,13 @@ const RessourceCard: React.FC<RessourceCardProps> = ({ data, isTrendy }) => {
           <p
             className={`${isTrendy ? "w-1/3 sm:w-1/2" : "w-full"} text-black font-bold text-lg`}
           >
-            {data.name}
+            {data.title}
           </p>
           <div
             className={`${isTrendy ? "w-2/3 sm:w-1/2" : "w-full"} text-right italic font-light`}
           >
             <p>
-              <span className="font-bold">{data.category}</span> - {data.date} - {data.author}
+              <span className="font-bold">{data.category}</span> - {formatDate(data?.publish_date?.date)} - {data.author}
             </p>
           </div>
         </div>

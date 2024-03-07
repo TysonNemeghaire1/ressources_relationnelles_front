@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from "@/components/lightButton/lightButton";
 import TrendyRessources from '@/components/trendyRessources';
 import LastestPublications from '@/components/lastestPublications';
+import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/navigation';
 
 export default function Page() {
     const [showPwdPopup, pwdPopup] = useState(false);
@@ -16,6 +18,10 @@ export default function Page() {
     const share = 13;
     const favorite = 28;
     const comment = 158;
+
+    const router = useRouter()
+    const {logout} = useAuth()
+    const currentUser = useAuth()
     
     const InfoEdit = () => {
         console.log("MODIFIER MES INFORMATIONS button clicked");
@@ -27,9 +33,15 @@ export default function Page() {
         pwdPopup(!showPwdPopup);
     };
 
+    useEffect(()=>{
+        if(!currentUser?.currentUser?.id){
+            router.push('/auth/login')
+            logout()
+        }
+    },[])
+
     return (
         <main className="p-3">
-            
             <div className="flex pt-10 flex-wrap justify-center md:justify-between">
                 <h1 className="text-4xl">MON COMPTE</h1>
                 <div className="flex justify-center flex-wrap">
@@ -52,9 +64,10 @@ export default function Page() {
                 <span className="font-bold">{id}</span>
             </div>
             <div className="italic mb-5">Ce nom sera affiché avec vos ressources et commentaires</div>
+
             <div className="flex mt-5">
                 <span className="uppercase block w-40 text-custom-blue-3 font-bold">Email</span>
-                <span className="font-bold">{email}</span>
+                <span className="font-bold">{currentUser.currentUser?.email}</span>
             </div>
              
             {showInfoPopup && (

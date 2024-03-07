@@ -1,9 +1,10 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {useSearchParams} from 'next/navigation'
 import Title from '@/components/texts/titlePage';
 import RessourceCard from '@/components/cards/ressourceCard';
+import { getRessources } from '@/api/ressources';
 
 const sharedResources = [
     {
@@ -149,7 +150,17 @@ function Search() {
 }
 
 export default function Page() {
-
+    const [ressources, setRessources] = useState([])
+    const [totalItems, setTotalItems] = useState()
+    useEffect(()=>{
+        getRessources().then((data)=>{
+            console.log(data)
+            setRessources(data['hydra:member'])
+            setTotalItems(data['hydra:totalItems'])
+        }).catch((error)=>{
+            console.log(error)
+        })
+    },[])
 
     return (
         <main className="flex min-h-screen flex-col justify-start py-14 px-5">
@@ -160,10 +171,9 @@ export default function Page() {
                 </div>
                 <div className='grid w-full gap-2 sm:grid-cols-2 md:grid-cols-3'>
                     {
-                        sharedResources.map((val, key) => {
+                        ressources?.map((val, key) => {
                             return (
-                                <div key={key}
-                                     className='bg-gray-100 hover:scale-110 hover:bg-custom-blue-0 transition-transform duration-200'>
+                                <div key={key} className='bg-gray-100 hover:scale-110 hover:bg-custom-blue-0 transition-transform duration-200'>
                                     <RessourceCard data={val} isTrendy={false}/>
                                 </div>
                             )

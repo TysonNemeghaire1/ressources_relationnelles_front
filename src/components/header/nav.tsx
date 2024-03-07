@@ -32,7 +32,7 @@ function Nav() {
             </li>
           </Link>
           {
-            currentUser.currentUser && 
+            currentUser?.currentUser?.id && 
               <>
               <Link href={'/ressources?type=favorites'}>
                 <li className="whitespace-pre-line rounded-lg p-3 hover:bg-custom-blue-4 hover:bg-opacity-15">

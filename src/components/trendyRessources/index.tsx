@@ -22,7 +22,7 @@ function TrendyRessources() {
             active={filter}
           />
           {
-            currentUser &&
+            currentUser?.currentUser?.id &&
               <>
               <Button
               icon={<FaRegStar />}

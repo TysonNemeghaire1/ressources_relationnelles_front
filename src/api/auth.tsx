@@ -1,3 +1,5 @@
+import { jwtDecode } from "jwt-decode";
+
 /**
  * Effectue une requête d'authentification au backend.
  * @param {string} email L'email de l'utilisateur.
@@ -17,12 +19,13 @@ export async function login(email:string, password:string) {
         const data = await response.json();
 
         if (response.ok) {
+            const decodedToken = jwtDecode(data.token)
             const user = {
-                id : '02321421', 
-                name: 'Patricio', 
-                email: 'dadzad.zeze@dzdz.com'
-            };
-        
+                id: decodedToken?.id,
+                name: `${decodedToken?.firstName} ${decodedToken?.lastName}`,
+                email: decodedToken?.email,
+            } 
+            console.log(user)
             return { token: data.token, user };
         } else {
             throw new Error(data.message || "Erreur d'authentification");
