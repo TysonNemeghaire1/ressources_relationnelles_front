@@ -150,7 +150,6 @@ function Search() {
 
 export default function Page() {
 
-
     return (
         <main className="flex min-h-screen flex-col justify-start py-14 px-5">
             <div className='flex flex-col w-full gap-2'>
