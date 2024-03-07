@@ -14,11 +14,13 @@ export default function Page() {
     const param = searchParams.get('type')
 
     useEffect(()=>{
-        getRessources(param).then((data)=>{
-            setRessources(data['hydra:member'])
-        }).catch((error)=>{
-            console.log(error)
-        })
+        if(param){
+            getRessources(param).then((data)=>{
+                setRessources(data['hydra:member'])
+            }).catch((error)=>{
+                console.log(error)
+            })
+        }
     },[param])
 
     return (
