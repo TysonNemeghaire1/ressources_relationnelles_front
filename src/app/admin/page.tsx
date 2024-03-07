@@ -216,7 +216,7 @@ export default function Page() {
 
     return (
         <main className="py-10">
-            <h1 className="text-4xl text-gray-700 text-center font-light mb-4 align-top ">PANNEAU D'ADMINISTRATION</h1>
+            <h1 className="text-4xl text-gray-700 text-center font-light mb-4 align-top ">PANNEAU D&apos;ADMINISTRATION</h1>
             <AdminPanel />
             
             <div className="flex md:justify-between justify-center items-end flex-wrap">
@@ -278,7 +278,7 @@ export default function Page() {
               {
                 sharedResources.map((val, key) => {
                   return (
-                    <RessourceList id={val.id} name={val.title} category={val.category} date={val.date} author={val.author} />
+                    <RessourceList key={key} id={val.id} name={val.title} category={val.category} date={val.date} author={val.author} />
                   )
                 })
               }
@@ -319,7 +319,7 @@ export default function Page() {
               {
                 connectedCitizens.map((val, key) => {
                     return (
-                      <UserList id={val.id} login={val.login} mail={val.mail} inscription={val.inscription} />
+                      <UserList key={key} id={val.id} login={val.login} mail={val.mail} inscription={val.inscription} />
                     )
                 })
               }

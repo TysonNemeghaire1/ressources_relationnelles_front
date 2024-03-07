@@ -48,49 +48,49 @@ function TrendyRessources() {
       <div className="xl:w-11/12 mx-auto my-5 h-80 overflow-y-auto flex flex-col gap-5 pr-3 scroll-bar">
         <RessourceCard
           data={{
-            id: "12",
-            name: "toto",
-            author: "cards",
-            category: "1a2e05",
-            content:
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            date: "12/09/2012",
+              id: "12",
+              title: "toto",
+              author: "cards",
+              category: "1a2e05",
+              content:
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+              publish_date: "12/09/2012",
+          }}
+          isTrendy={true}
+        />
+        <RessourceCard
+          data={{
+              id: "12",
+              title: "toto",
+              author: "cards",
+              category: "1a2e05",
+              content:
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+              publish_date: "12/09/2012",
+          }}
+          isTrendy={true}
+        />
+        <RessourceCard
+          data={{
+              id: "12",
+              title: "toto",
+              author: "cards",
+              category: "1a2e05",
+              content:
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+              publish_date: "12/09/2012",
           }}
           isTrendy={true}
         />
         <RessourceCard
           data={{
             id: "12",
-            name: "toto",
+            title: "toto",
             author: "cards",
             category: "1a2e05",
             content:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            date: "12/09/2012",
-          }}
-          isTrendy={true}
-        />
-        <RessourceCard
-          data={{
-            id: "12",
-            name: "toto",
-            author: "cards",
-            category: "1a2e05",
-            content:
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            date: "12/09/2012",
-          }}
-          isTrendy={true}
-        />
-        <RessourceCard
-          data={{
-            id: "12",
-            name: "toto",
-            author: "cards",
-            category: "1a2e05",
-            content:
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-            date: "12/09/2012",
+            publish_date: "12/09/2012",
           }}
           isTrendy={true}
         />
