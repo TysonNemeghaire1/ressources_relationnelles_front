@@ -1,24 +1,19 @@
 const getContent = async (url: string) => {
-  const response = await fetch(`http://localhost/api/${url}`, {
-    method: "GET",
-    headers: new Headers({
-      "Content-Type": "application/ld+json",
-    }),
+  const headers = new Headers({
+    "Content-Type": "application/ld+json",
   });
 
-  return response.json()
-};
+  const token = localStorage.getItem("token");
+  if (token) {
+    headers.append("Authorization", `Bearer ${token}`);
+  }
 
-const getConnectedContent = async (url: string) => {
   const response = await fetch(`http://localhost/api/${url}`, {
     method: "GET",
-    headers: new Headers({
-      "Content-Type": "application/ld+json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    }),
+    headers: headers,
   });
 
-  return response.json()
+  return response.json();
 };
 
 const postContent = (url: string, body: Object) => {
@@ -63,4 +58,4 @@ const deleteContent = (url: string) => {
   });
 };
 
-export {deleteContent, getConnectedContent, getContent, patchContent, postContent, putContent}
+export {deleteContent, getContent, patchContent, postContent, putContent}

@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import LastestPublications from "@/components/lastestPublications";
 import Link from "next/link";
-import { getConnectedContent, getContent } from "@/api/fetch";
+import {getContent } from "@/api/fetch";
 
 export default function Home() {
   const {currentUser} = useAuth()
@@ -20,7 +20,7 @@ export default function Home() {
 
 
   useEffect(()=>{
-    const data = getConnectedContent('resources?page=1').then((response)=>{
+    const data = getContent('resources?page=1').then((response)=>{
       return response.json()
     }).then((value)=>{
       console.log(value)

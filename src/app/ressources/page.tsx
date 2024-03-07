@@ -13,9 +13,8 @@ export default function Page() {
     const searchParams = useSearchParams(); 
     const param = searchParams.get('type')
 
-
     useEffect(()=>{
-        getRessources().then((data)=>{
+        getRessources(param).then((data)=>{
             setRessources(data['hydra:member'])
         }).catch((error)=>{
             console.log(error)
@@ -26,6 +25,7 @@ export default function Page() {
         <main className="flex min-h-screen flex-col justify-start py-14 px-5">
             <div className='flex flex-col w-full gap-2'>
                 <Title>RESSOURCES : </Title>
+                <p>{param === 'me' ? 'Mes ressources' : param === 'favorite' ? 'Favoris' : 'Toutes'}</p>
                 <div>
                     <div className='w-full'></div>
                 </div>
