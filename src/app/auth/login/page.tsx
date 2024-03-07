@@ -36,7 +36,7 @@ export default function Login() {
       <div className="flex flex-col items-center justify-center p-4 white">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex flex-col md:flex-row gap-2 auto-rows-auto">
-            <div className='flex items-center justify-center h-[30vh]  md:h-[40vh] w-2/5'>
+            <div className='flex items-center justify-center h-[30vh] md:h-[40vh] w-2/5 max-sm:w-full'>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">Adresse mail</label>
                 <input onChange={(e)=>setEmail(e.target.value)} type="email" id="email" className="mt-1 p-2 w-full border-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-gray-700" placeholder="mail@exemple.com" required />
