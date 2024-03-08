@@ -23,7 +23,7 @@ function Nav() {
     <div className="w-full bg-custom-blue-0">
       <nav className="mx-auto flex h-20 justify-between lg:w-4/5">
         <ul className="flex w-2/3 items-center gap-2">
-          <Link href={'/ressources'}>
+          <Link href={'/ressources?type=all'}>
             <li className="whitespace-pre-line rounded-lg p-3 hover:bg-custom-blue-4 hover:bg-opacity-15">
               <span className="table text-sm font-bold text-custom-blue-4">
                 TOUTES LES
