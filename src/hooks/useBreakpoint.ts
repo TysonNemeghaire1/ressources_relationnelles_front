@@ -13,14 +13,16 @@ const enum Breakpoints {
  */
 export function useSmallScreen() {
     const [isSmall, setIsSmall] = useState(false);
+
     useLayoutEffect(() => {
         function updateSize() {
             if (window.innerWidth > Breakpoints.MD) setIsSmall(false);
             else setIsSmall(true);
         }
-
-        window.addEventListener("resize", updateSize);
+       window.addEventListener("resize", updateSize);
+        updateSize()
         return () => window.removeEventListener("resize", updateSize);
     }, []);
+
     return isSmall;
 }

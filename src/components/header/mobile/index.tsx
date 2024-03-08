@@ -26,16 +26,15 @@ function MobileHeader() {
   return (
     <>
       <header className="w-full bg-header-gradient p-2 flex justify-between items-center">
-        <div className="flex items-center gap-5">
+        <div className="flex items-center">
           <Image
             width={64}
             height={24}
             src="/logo.png"
             alt="Logo du ministère"
           />
-          <p className="text-lg font-bold">Ressources</p>
         </div>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center">
           <SearchBar
             onFocus={toggleLabel}
             showLabel={showLabel}
@@ -46,7 +45,7 @@ function MobileHeader() {
             onClick={() => setShowList(!showList)}
             className="rounded-lg p-1 font-bold hover:bg-opacity-15 hover:bg-white"
           >
-            <RxHamburgerMenu className="text-lg" />
+            <RxHamburgerMenu className="" />
           </button>
         </div>
       </header>
