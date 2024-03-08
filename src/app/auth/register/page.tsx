@@ -32,7 +32,7 @@ export default function Register() {
               <div>
               <form onSubmit={handleSignup}>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">Adresse mail</label>
-                <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="mt-1 p-2 w-full border-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-gray-700" placeholder="mail@exemple.com" required />
+                <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="mt-1 p-2 w-full border-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-gray-700" placeholder="mail@exemple.com" />
                 <p className='h-[3vh]'>
                 </p>
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700">Mot de passe</label>
@@ -40,7 +40,7 @@ export default function Register() {
                 <p className='h-[3vh]'>
                 </p>
                 <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-700">Confirmez le mot de passe</label>
-                <input type="password" id="confirm-password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required className="mt-1 p-2 w-full border-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-gray-700" required />
+                <input type="password" id="confirm-password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required className="mt-1 p-2 w-full border-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-gray-700" />
                 <p className='h-[3vh]'>
                 </p>
                 </form>
