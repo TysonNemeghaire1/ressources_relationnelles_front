@@ -3,7 +3,7 @@ import ActionRessource from "@/components/actionRessource";
 import TrendyRessources from "@/components/trendyRessources";
 import Title from "@/components/texts/titlePage";
 import RessourceCard from "@/components/cards/ressourceCard";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import LastestPublications from "@/components/lastestPublications";
@@ -13,6 +13,7 @@ import {getContent } from "@/api/fetch";
 export default function Home() {
   const {currentUser} = useAuth()
   const router = useRouter()
+  const [articles, setArticles] = useState([])
 
   const handlePublish = () => {
     router.push('/ressource/create')
@@ -20,14 +21,9 @@ export default function Home() {
 
 
   useEffect(()=>{
-    const data = getContent('resources?page=1').then((response)=>{
-      return response.json()
-    }).then((value)=>{
-      console.log(value)
+    getContent('resources').then((response)=>{
+      setArticles(response['hydra:member'])
     })
-    
-    
-    console.log(currentUser)
   },[])
   
   return (
@@ -47,114 +43,13 @@ export default function Home() {
       <section className="pb-14 py-10">
         <Title>LES DERNIÈRES RESSOURCES PUBLIÉES</Title>
         <div className="mt-5 grid grid-cols-1 gap-2 lg:odd-2:border-x-custom-blue-2 md:grid-cols-2 lg:odd-2:border-x-2 lg:odd-2:px-1 lg:grid-cols-3">
-          <RessourceCard
-            data={{
-              id: "12",
-              title: "toto",
-              author: "cards",
-              category: "1a2e05",
-              content:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-              publish_date: "12/09/2012",
-            }}
-            isTrendy={false}
-          />
-          <RessourceCard
-            data={{
-              id: "12",
-              title: "toto",
-              author: "cards",
-              category: "1a2e05",
-              content:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-              publish_date: "12/09/2012",
-            }}
-            isTrendy={false}
-          />
-          <RessourceCard
-            data={{
-              id: "12",
-              title: "toto",
-              author: "cards",
-              category: "1a2e05",
-              content:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-              publish_date: "12/09/2012",
-            }}
-            isTrendy={false}
-          />
-          <RessourceCard
-            data={{
-              id: "12",
-              title: "toto",
-              author: "cards",
-              category: "1a2e05",
-              content:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-              publish_date: "12/09/2012",
-            }}
-            isTrendy={false}
-          />
-          <RessourceCard
-            data={{
-              id: "12",
-              title: "toto",
-              author: "cards",
-              category: "1a2e05",
-              content:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-              publish_date: "12/09/2012",
-            }}
-            isTrendy={false}
-          />
-          <RessourceCard
-            data={{
-              id: "12",
-              title: "toto",
-              author: "cards",
-              category: "1a2e05",
-              content:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-              publish_date: "12/09/2012",
-            }}
-            isTrendy={false}
-          />
-          <RessourceCard
-            data={{
-              id: "12",
-              title: "toto",
-              author: "cards",
-              category: "1a2e05",
-              content:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-              publish_date: "12/09/2012",
-            }}
-            isTrendy={false}
-          />
-          <RessourceCard
-            data={{
-              id: "12",
-              title: "toto",
-              author: "cards",
-              category: "1a2e05",
-              content:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-              publish_date: "12/09/2012",
-            }}
-            isTrendy={false}
-          />
-          <RessourceCard
-            data={{
-              id: "12",
-              title: "toto",
-              author: "cards",
-              category: "1a2e05",
-              content:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
-              publish_date: "12/09/2012",
-            }}
-            isTrendy={false}
-          />
+          {
+            articles?.map((val, key)=>{
+              return(
+                <RessourceCard data={val} key={key} isTrendy={false}/>
+              )
+            })
+          }
         </div>
       </section>
       {

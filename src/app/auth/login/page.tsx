@@ -4,12 +4,12 @@ import React, { useEffect, useState } from 'react';
 import Image from "next/image";
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from "next/navigation";
-import { login as apiLogin } from '@/api/auth';
+import { getToken } from '@/api/auth';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login, setCurrentUser } = useAuth()
+  const { login } = useAuth()
   const currentUser = useAuth()
   const router = useRouter()
 
@@ -22,7 +22,7 @@ export default function Login() {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     try {
-      const { token } = await apiLogin(email, password);
+      const { token } = await getToken(email, password);
       login(token);
       router.push('/');
     } catch (error) {

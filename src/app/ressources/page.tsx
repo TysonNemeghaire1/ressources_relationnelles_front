@@ -13,11 +13,12 @@ function Search() {
 
 export default function Page() {
     const [ressources, setRessources] = useState([])
-    const param = <Search/>
+    const searchParams = useSearchParams(); 
+    const param = searchParams.get('type')
 
     useEffect(() => {
         if (param) {
-            getRessources(param.props).then((data) => {
+            getRessources(param).then((data) => {
                 setRessources(data['hydra:member'])
             }).catch((error) => {
                 console.log(error)
@@ -29,7 +30,7 @@ export default function Page() {
         <main className="flex min-h-screen flex-col justify-start py-14 px-5">
             <div className='flex flex-col w-full gap-2'>
                 <Title>RESSOURCES : </Title>
-                <p>{param.props === 'me' ? 'Mes ressources' : param.props === 'favorite' ? 'Favoris' : 'Toutes'}</p>
+                <p>{param === 'me' ? 'Mes ressources' : param === 'favorite' ? 'Favoris' : 'Toutes'}</p>
                 <div>
                     <div className='w-full'></div>
                 </div>
@@ -38,7 +39,7 @@ export default function Page() {
                         ressources?.map((val, key) => {
                             return (
                                 <div key={key}
-                                     className='bg-gray-100 hover:scale-110 hover:bg-custom-blue-0 transition-transform duration-200'>
+                                    className='bg-gray-100 hover:scale-110 hover:bg-custom-blue-0 transition-transform duration-200'>
                                     <RessourceCard data={val} isTrendy={false}/>
                                 </div>
                             )

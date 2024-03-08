@@ -1,19 +1,10 @@
-import { jwtDecode } from "jwt-decode";
-
-interface DecodedToken {
-    id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-}
-
 /**
  * Effectue une requête d'authentification au backend.
  * @param {string} email
  * @param {string} password
- * @returns {Promise<{token: string, user: object}>}
+ * @returns {Promise<{token: string}>}
  */
-export async function login(email:string, password:string) {
+export async function getToken(email:string, password:string): Promise<{ token: string; }> {
     try {
         const response = await fetch('http://localhost/api/login', {
             method: 'POST',
@@ -26,18 +17,42 @@ export async function login(email:string, password:string) {
         const data = await response.json();
 
         if (response.ok) {
-            const decodedToken:DecodedToken = jwtDecode(data.token)
-            const user = {
-                id: decodedToken?.id,
-                name: `${decodedToken?.firstName} ${decodedToken?.lastName}`,
-                email: decodedToken?.email,
-            } 
-            console.log(user)
-            return { token: data.token, user };
+            return { token: data.token };
         } else {
             throw new Error(data.message || "Erreur d'authentification");
         }
     } catch (error) {
+        throw error;
+    }
+}
+
+/**
+ * Envoie une requête d'inscription au backend.
+ * @param {string} email
+ * @param {string} password
+ * @returns {Promise<{user: object}>}
+ */
+export async function signup(email: string, password: string): Promise<{ user: object; }> {
+    try {
+        const body = JSON.stringify({ email, password });
+
+        const response = await fetch('http://localhost/api/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: body,
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            return { user: data.user };
+        } else {
+            throw new Error(data.message || "Erreur lors de l'inscription");
+        }
+    } catch (error) {
+        console.error("Erreur lors de l'inscription:", error);
         throw error;
     }
 }
